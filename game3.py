@@ -13,7 +13,6 @@ def zgadywanka():
         max = 1000
         return render_template("zgadywanka.html", guess=f'Czy jest to {guess(min, max)}?', min=min, max=max)
     else: #POST
-        # uzytkownik właśnie odpowiedział "za mało", "za dużo" lub "zgadłeś"
         result = request.form['result']
         min = int(request.form['min'])
         max = int(request.form['max'])
@@ -23,7 +22,7 @@ def zgadywanka():
             max = gss
         elif result == 'Za mało':
             min = gss
-        else:  # result == 'Zgadłeś'
+        else:
             return render_template("zgadywanka.html", guess='Hurra!')
         return render_template("zgadywanka.html", guess=f'Czy jest to {guess(min, max)}?', min=min, max=max)
 
